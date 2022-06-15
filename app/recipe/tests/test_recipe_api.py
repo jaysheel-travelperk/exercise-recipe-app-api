@@ -71,10 +71,6 @@ class PrivateRecipeApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = create_user(email='user@example.com', password='test123')
-        # self.user = get_user_model().objects.create_user(
-        #     'user@example.com',
-        #     'testpass123'
-        # )
         self.client.force_authenticate(self.user)
 
     def test_retrieve_recipes(self):
@@ -94,10 +90,6 @@ class PrivateRecipeApiTests(TestCase):
         other_user = create_user(
             email='other@example.com',
             password='password123')
-        # other_user = get_user_model().objects.create_user(
-        #     'other@example.com',
-        #     'password123'
-        # )
         create_recipe(user=other_user)
         create_recipe(user=self.user)
 
